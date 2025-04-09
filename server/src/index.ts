@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -7,18 +7,18 @@ dotenv.config();
 
 // Create Express app
 const app = express();
-const PORT = process.env.LOCAL_SERVER_PORT || 4000;
+const PORT: number | string = process.env.LOCAL_SERVER_PORT || 4000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello, World!.');
 });
 
 // Basic route
-app.get('/api/health', (req, res) => {
+app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', message: 'Server is running smoothly!' });
 });
 
