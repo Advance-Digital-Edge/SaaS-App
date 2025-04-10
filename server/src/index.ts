@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { startDiscordBot } from './services/discord';
 
 // Load environment variables
 dotenv.config();
@@ -16,6 +17,8 @@ app.use(express.json());
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, World!.');
 });
+
+startDiscordBot(); // Start Discord bot
 
 // Basic route
 app.get('/api/health', (req: Request, res: Response) => {
